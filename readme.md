@@ -5,7 +5,7 @@ Train a deeper LSTM and normalized CNN Visual Question Answering model. This cur
 
 ### Requirements
 
-This code is written in Lua and requires [Torch](http://torch.ch/). The preprocssinng code is in Python, and you need to install [NLTK](http://www.nltk.org/) if you want to use NLTK to tokenize the question.
+This code is written in Lua and requires [Torch](http://torch.ch/). The preprocessinng code is in Python, and you need to install [NLTK](http://www.nltk.org/) if you want to use NLTK to tokenize the question.
 
 ### Ubuntu installation
 
@@ -45,7 +45,7 @@ $ th eval.lua -input_img_h5 data_img.h5 -input_ques_h5 data_prepro.h5 -input_jso
 
 This will generate the answer json file both on Open-Ended and Multiple-Choice. To evaluate the accuracy of generate result, you need to download the [VQA evaluation tools](https://github.com/VT-vision-lab/VQA).
 
-If you want to train on **train + validation set** and evaluate on **test set**, you can download the feature from [here](https://filebox.ece.vt.edu/~jiasenlu/codeRelease/vqaRelease/train_val/data_train-val_test.zip), and the pretrained model from [here](https://filebox.ece.vt.edu/~jiasenlu/codeRelease/vqaRelease/train_val/pretrained_lstm_train-val_test). The rest is the same as previous one, except you need to evaluate the generated results on [testing server](http://www.visualqa.org/challenge.html).
+If you want to train on **train + validation set** and evaluate on **test set**, you can download the feature from [here](https://filebox.ece.vt.edu/~jiasenlu/codeRelease/vqaRelease/train_val/data_train-val_test.zip), and the pretrained model from [here](https://filebox.ece.vt.edu/~jiasenlu/codeRelease/vqaRelease/train_val/pretrained_lstm_train-val_test). The rest is the same as previous one, except you need to evaluate the generated results on the [testing server](http://www.visualqa.org/challenge.html).
 
 ### Training
 
@@ -63,7 +63,7 @@ Once you have these, we are ready to get the question and image features. Back t
 $ python prepro.py --input_train_json data/vqa_raw_train.json --input_test_json data/vqa_raw_test.json --num_ans 1000
 ``` 
 
-to get the question features. `--num_ans` specifiy how many top answers you want to use during training. You will also see some question and answer statistics in the terminal output. This will generate two files in your main folder, `data_prepro.h5` and `data_prepro.json`. To get the image features, run
+to get the question features. `--num_ans` specify how many top answers you want to use during training. You will also see some question and answer statistics in the terminal output. This will generate two files in your main folder, `data_prepro.h5` and `data_prepro.json`. To get the image features, run
 
 ```
 $ th prepro_img.lua -input_json data_prepro.json -image_root path_to_image_root -cnn_proto path_to_cnn_prototxt -cnn_model path to cnn_model
@@ -75,7 +75,7 @@ Here we use VGG_ILSVRC_19_layers [model](https://gist.github.com/ksimonyan/37851
 $ th train.lua
 ``` 
 
-with the default parameter, this will take several hours on a sinlge Tesla k40 GPU, and will generate the model under `model/save/`
+with the default parameter, this will take several hours on a single Tesla k40 GPU, and will generate the model under `model/save/`
 
 ### Reference
 
